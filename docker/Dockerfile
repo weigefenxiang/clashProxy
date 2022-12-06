@@ -16,7 +16,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN	apt update && apt install -y $Requirement \
 	&& echo "PermitRootLogin yes" >>  /etc/ssh/sshd_config \
 	/usr/sbin/sshd restart \
-	chmod +X /root/expect_01.sh
+	chmod +x /root/expect_01.sh
 
 	#&& /usr/bin/expect /root/expect_01.sh \
 WORKDIR /root/
