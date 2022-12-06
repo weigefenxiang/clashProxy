@@ -1,0 +1,16 @@
+name: AutoClash
+on:
+  push:
+    paths:
+      - '!.github/**'
+      - '!docker/**'
+    #paths-ignore:
+      #- 'docker/**'
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    env:
+      VER: "0.1"
+      DH: "${{ secrets.DOCKERHUB_USERNAME }}/autoclash"
+      TZ: Asia/Shanghai
+    timeout-minutes: 10
