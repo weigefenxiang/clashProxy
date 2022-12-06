@@ -11,13 +11,13 @@ MAINTAINER author "Eleven@gmail.com"
 ADD sleep.sh /root/sleep.sh
 ADD expect_01.sh /root/expect_01.sh
 
-ARG Requirement='wget unzip git curl speedtest-cli expect'
-
+ARG Requirement='wget unzip git curl speedtest-cli expect openssh-server expect'
+ENV DEBIAN_FRONTEND=noninteractive
 RUN	apt update && apt install -y $Requirement \
-	&& /usr/bin/expect /root/expect_01.sh \
 	&& echo "PermitRootLogin yes" >>  /etc/ssh/sshd_config \
 	/usr/sbin/sshd restart
 
+	#&& /usr/bin/expect /root/expect_01.sh \
 WORKDIR /root/
 
 EXPOSE 22
