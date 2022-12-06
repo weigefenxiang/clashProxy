@@ -8,7 +8,7 @@ LABEL maintainer=Eleven
 
 MAINTAINER author "Eleven@gmail.com"
 
-ADD sleep.sh /root/sleep.sh
+ADD doocker/sleep.sh /root/sleep.sh
 
 ARG Requirement='wget unzip git net-tools iproute2 iptables curl speedtest-cli openssh-server'
 
