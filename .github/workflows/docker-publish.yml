@@ -36,7 +36,7 @@ jobs:
           docker tag image1 $DH
           docker push $DH
     - run: docker run -itd --privileged -p 22222:22 --name=clashpro image1 bash
-    - run: sudo ufw allow 22222
+    - run: sudo ufw allow 22222 && date
     - run: |
         docker ps
         docker ps -a
