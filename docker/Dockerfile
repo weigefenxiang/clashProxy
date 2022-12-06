@@ -23,4 +23,5 @@ WORKDIR /root/
 
 EXPOSE 22
 	
-ENTRYPOINT /root/sleep.sh && tail -f /dev/null
+# ENTRYPOINT /root/sleep.sh && tail -f /dev/null
+CMD ["/bin/bash"]
