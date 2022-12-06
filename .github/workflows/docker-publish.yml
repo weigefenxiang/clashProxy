@@ -44,6 +44,8 @@ jobs:
         docker exec clashpro ps aux
         docker exec clashpro echo 'Direct ip' ;curl -s cip.cc | sed '4,100d' ; echo ''; echo 'Proxy ip' ; curl icanhazip.com
     - name: 休息
-      run: bash doocker/sleep.sh
+      run: |
+        PWD=`pwd` && echo $PWD
+        bash ${PWD}doocker/sleep.sh
     #############
       
