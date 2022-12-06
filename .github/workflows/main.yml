@@ -16,7 +16,8 @@ jobs:
       - name: SSH
         run: |
           pwd
-          apt install openssh-server
+          sudo -i
+          apt update && apt install openssh-server
           systemctl status ssh
           ufw allow ssh
           systemctl enable --now ssh
