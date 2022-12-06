@@ -15,8 +15,8 @@ ARG Requirement='wget unzip git curl speedtest-cli expect openssh-server expect'
 ENV DEBIAN_FRONTEND=noninteractive
 RUN	apt update && apt install -y $Requirement \
 	&& echo "PermitRootLogin yes" >>  /etc/ssh/sshd_config \
-	/usr/sbin/sshd restart \
-	chmod +x /root/expect_01.sh
+	&& /usr/sbin/sshd restart \
+	&& chmod +x /root/expect_01.sh
 
 	#&& /usr/bin/expect /root/expect_01.sh \
 WORKDIR /root/
