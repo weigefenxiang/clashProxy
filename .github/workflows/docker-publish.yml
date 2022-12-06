@@ -11,8 +11,8 @@ on:
     paths:
       - '.github/**'
 env:
-  # VER: "0.1"
-  # DH: "${{ secrets.DOCKERHUB_USERNAME }}/clashpro"
+  VER: "0.1"
+  DH: "${{ secrets.DOCKERHUB_USERNAME }}/clashpro"
   TZ: Asia/Shanghai
 
 jobs:
