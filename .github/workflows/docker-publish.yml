@@ -1,0 +1,52 @@
+name: Docker
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+on:
+  #schedule:
+    #- cron: '21 14 * * *'
+  push:
+    paths:
+      - '.github/**'
+env:
+  # VER: "0.1"
+  # DH: "${{ secrets.DOCKERHUB_USERNAME }}/clashpro"
+  TZ: Asia/Shanghai
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+    - uses: actions/checkout@v3
+    - run: docker build -t image1 docker/.
+    -
+      name: Login to DockerHub
+      uses: docker/login-action@v1 
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+    - 
+      name: Push
+      run: |
+          docker tag image1 $DH:$VER
+          docker push $DH:$VER
+          docker tag image1 $DH
+          docker push $DH
+    - run: docker run -itd --privileged -p 22222:22 --name=clashpro image1 bash
+    - run: sudo ufw allow 22222
+    - run: docker ps
+    - run: docker ps -a
+    - run: docker logs clashpro
+    - run: docker exec clashpro ps aux
+    - run: docker exec clashpro echo 'Direct ip' ;curl -s cip.cc | sed '4,100d' ; echo ''; echo 'Proxy ip' ; curl icanhazip.com
+    - run: docker exec clashpro ./sleep.sh
+    - run: docker exec clashpro ps aux
+    - run: docker logs clashpro
+    - run: docker exec clashpro echo 'Direct ip' ;curl -s cip.cc | sed '4,100d' ; echo ''; echo 'Proxy ip' ; curl icanhazip.com
+    - name: 休息
+      run: bash doocker/sleep.sh
+      
+      
