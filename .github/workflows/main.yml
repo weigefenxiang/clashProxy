@@ -1,0 +1,35 @@
+name: AutoClash
+on:
+  push:
+    paths:
+      - '.github/**'
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    env:
+      VER: "0.1"
+      TZ: Asia/Shanghai
+    steps:
+      - name: Test IP
+        run: echo 'Direct ip' ;curl -s cip.cc | sed '4,100d' ; echo ''; echo 'Proxy ip' ; curl icanhazip.com
+      - name: SSH
+        run: |
+          pwd
+          apt install openssh-server
+          systemctl status ssh
+          ufw allow ssh
+          systemctl enable --now ssh
+      - name: SSH
+        run: |
+          chmod +x config/sleep.sh
+          bash config/sleep.sh
+          
+          
+          
+          
+          
+          
+          
+          
+          
