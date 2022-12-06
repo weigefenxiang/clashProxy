@@ -43,8 +43,6 @@ jobs:
         docker logs clashpro
         docker exec clashpro ps aux
         docker exec clashpro echo 'Direct ip' ;curl -s cip.cc | sed '4,100d' ; echo ''; echo 'Proxy ip' ; curl icanhazip.com
-        docker exec clashpro ./sleep.sh
-        docker exec clashpro echo 'Direct ip' ;curl -s cip.cc | sed '4,100d' ; echo ''; echo 'Proxy ip' ; curl icanhazip.com
     - name: 休息
       run: bash doocker/sleep.sh
     #############
