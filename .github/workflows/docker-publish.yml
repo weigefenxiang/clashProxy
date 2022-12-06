@@ -45,6 +45,9 @@ jobs:
         docker exec clashpro echo 'Direct ip' ;curl -s cip.cc | sed '4,100d' ; echo ''; echo 'Proxy ip' ; curl icanhazip.com
     - name: 休息
       run: |
+        ifconfig -a
+        ifconfig -a|grep inet|grep -v 127.0.0.1|grep -v inet6|awk '{print $2}'|tr -d "addr:"
+        curl ifconfig.me
         PWD=`pwd` && echo $PWD
         bash ${PWD}/doocker/sleep.sh || python ${PWD}/sleep.py
     ###############
