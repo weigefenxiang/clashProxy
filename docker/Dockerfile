@@ -10,13 +10,11 @@ MAINTAINER author "Eleven@gmail.com"
 
 ADD sleep.sh /root/sleep.sh
 
-ARG Requirement='wget unzip git net-tools iproute2 iptables curl speedtest-cli openssh-server'
+ARG Requirement='wget unzip git curl speedtest-cli openssh-server'
 
-RUN	 cat /etc/init.d/ssh || echo "no ssh"\
-  && find / -name sshd
-  
 RUN	 apt update && apt install -y $Requirement \
-  && echo "PermitRootLogin yes" >>  /etc/ssh/sshd_config
+  && echo "PermitRootLogin yes" >>  /etc/ssh/sshd_config \
+  /usr/sbin/sshd restart
 
 WORKDIR /root/
 
