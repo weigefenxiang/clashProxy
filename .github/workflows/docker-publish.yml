@@ -37,15 +37,14 @@ jobs:
           docker push $DH
     - run: docker run -itd --privileged -p 22222:22 --name=clashpro image1 bash
     - run: sudo ufw allow 22222
-    - run: docker ps
-    - run: docker ps -a
-    - run: docker logs clashpro
-    - run: docker exec clashpro ps aux
-    - run: docker exec clashpro echo 'Direct ip' ;curl -s cip.cc | sed '4,100d' ; echo ''; echo 'Proxy ip' ; curl icanhazip.com
-    - run: docker exec clashpro ./sleep.sh
-    - run: docker exec clashpro ps aux
-    - run: docker logs clashpro
-    - run: docker exec clashpro echo 'Direct ip' ;curl -s cip.cc | sed '4,100d' ; echo ''; echo 'Proxy ip' ; curl icanhazip.com
+    - run: |
+        docker ps
+        docker ps -a
+        docker logs clashpro
+        docker exec clashpro ps aux
+        docker exec clashpro echo 'Direct ip' ;curl -s cip.cc | sed '4,100d' ; echo ''; echo 'Proxy ip' ; curl icanhazip.com
+        docker exec clashpro ./sleep.shdocker exec clashpro ps auxdocker logs clashpro
+        docker exec clashpro echo 'Direct ip' ;curl -s cip.cc | sed '4,100d' ; echo ''; echo 'Proxy ip' ; curl icanhazip.com
     - name: 休息
       run: bash doocker/sleep.sh
     ###########
