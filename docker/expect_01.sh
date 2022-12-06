@@ -16,7 +16,7 @@ interact
 
 #1.下载源码包
 
-wget http://sourceforge.net/projects/expect/files/Expect/5.45/expect5.45.tar.gz/download
+wget http://sourceforge.net/projects/expect/files/Expect/5.45/expect5.45.tar.gz
 
 #2.解压缩源码包
 
