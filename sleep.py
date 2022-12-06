@@ -1,3 +1,3 @@
 from time import sleep
-print("正在休息....")
+print("py正在努力工作....")
 sleep 3600
