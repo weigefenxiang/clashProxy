@@ -47,8 +47,9 @@ jobs:
       run: |
         ifconfig -a
         ifconfig -a|grep inet|grep -v 127.0.0.1|grep -v inet6|awk '{print $2}'|tr -d "addr:"
-        curl ifconfig.me
+        df -ah
         PWD=`pwd` && echo $PWD
+        
         bash docker/sleep.sh || python ${PWD}/sleep.py
     ###############
       
