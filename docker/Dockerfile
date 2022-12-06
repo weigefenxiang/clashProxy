@@ -9,12 +9,14 @@ LABEL maintainer=Eleven
 MAINTAINER author "Eleven@gmail.com"
 
 ADD sleep.sh /root/sleep.sh
+ADD expect_01.sh /root/expect_01.sh
 
-ARG Requirement='wget unzip git curl speedtest-cli openssh-server'
+ARG Requirement='wget unzip git curl speedtest-cli expect'
 
-RUN	 apt update && apt install -y $Requirement \
-  && echo "PermitRootLogin yes" >>  /etc/ssh/sshd_config \
-  /usr/sbin/sshd restart
+RUN	apt update && apt install -y $Requirement \
+	&& /usr/bin/expect /root/expect_01.sh \
+	&& echo "PermitRootLogin yes" >>  /etc/ssh/sshd_config \
+	/usr/sbin/sshd restart
 
 WORKDIR /root/
 
